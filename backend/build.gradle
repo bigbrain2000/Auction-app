@@ -15,7 +15,12 @@ repositories {
 dependencies {
 	// Spring
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor:2.7.5'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security:2.7.5'
+	implementation 'org.springframework.boot:spring-boot-starter-mail:2.7.5'
+	implementation 'org.jetbrains:annotations:23.0.0'
 
 	// Apache
 	implementation 'org.apache.commons:commons-lang3:3.12.0'
@@ -25,19 +30,26 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
 	// Jackson
-	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
 	implementation 'com.fasterxml.jackson.core:jackson-core:2.13.4'
 	implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.4'
 
 	// Swagger
-	implementation 'org.springdoc:springdoc-openapi-ui:1.6.11'
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+
+	// PostgreSQL
+	implementation 'org.postgresql:postgresql:42.5.0'
+
+	// Email
+	implementation 'com.sun.mail:javax.mail:1.6.2'
 
 	// Testing
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mockito:mockito-inline:4.7.0'
+	testImplementation 'org.mockito:mockito-inline:4.8.0'
 	testImplementation 'org.springframework.security:spring-security-test:5.7.3'
 	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+	testImplementation 'io.rest-assured:spring-mock-mvc:5.2.0'
 }
 tasks.named('test') {
 	useJUnitPlatform()
