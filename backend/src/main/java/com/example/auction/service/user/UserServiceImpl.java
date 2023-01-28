@@ -148,7 +148,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void checkIfEmailIsValid(String email) throws InvalidEmailException {
-        if (!isValidEmailAddress(email)) {
+        if (!isValidEmailAddress(email) || email.isEmpty()) {
             LOGGER.debug("User email {} is not valid", email);
             throw new InvalidEmailException(email);
         }
@@ -203,6 +203,8 @@ public class UserServiceImpl implements UserService {
 
         String encodedPassword = bCryptPasswordEncoder.encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
+        appUser.setEnabled(true);
+        appUser.setLocked(false);
         userRepository.save(appUser);
         LOGGER.debug("User {} inserted into the database", appUser);
 
@@ -228,7 +230,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String register(@NotNull User newUser) throws InvalidEmailException, EmailAlreadyExistsException, WeakPasswordException {
 
-        checkIfEmailIsValid(newUser.getEmail());
+        //checkIfEmailIsValid(newUser.getEmail());
 
         String token = signUpUser(
                 new User(
@@ -327,7 +329,7 @@ public class UserServiceImpl implements UserService {
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
                 "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
                 "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 30 minutes. <p>See you soon</p>" +
+                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> <a  target=\"_blank\" href=\"" + link + "\">Activate Now</a> </p></blockquote>\n Link will expire in 30 minutes. <p>See you soon</p>" +
                 "        \n" +
                 "      </td>\n" +
                 "      <td width=\"10\" valign=\"middle\"><br></td>\n" +

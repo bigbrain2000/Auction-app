@@ -21,8 +21,8 @@ public class SwaggerConfiguration {
                         )
                 )
                 .externalDocs(new ExternalDocumentation()
-                        .description("Auction Hunters Documentation")
-                        .url("TBD"));
+                        .description("Auction Hunters repository and documentation")
+                        .url("https://github.com/bigbrain2000/Auction-app"));
 
     }
 }

@@ -50,7 +50,7 @@ public class User {
     private Set<Role> role = new HashSet<>();
 
     @Column(name = "credit_card_number", nullable = false, columnDefinition = "TEXT")
-    @Size(min = 16, max = 19)
+    //@Size(min = 16, max = 19)
     private String creditCardNumber;
 
     @Builder.Default

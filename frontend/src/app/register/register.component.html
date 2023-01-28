@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<form>
+  <div class="box">
+    <div class="form">
+      <h2>Sign up</h2>
+      <div class="inputBox">
+        <input type="text" required="required" [(ngModel)]="user.username">
+        <span>Username</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="password" required="required" [(ngModel)]="user.password">
+        <span>Password</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" required="required" [(ngModel)]="user.email">
+        <span>Email</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" required="required" [(ngModel)]="user.cityAddress">
+        <span>CityAddress</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" required="required" [(ngModel)]="user.phoneNumber">
+        <span>Phone number</span>
+        <i></i>
+      </div>
+
+      <div class="inputBox">
+        <input type="text" required="required" [(ngModel)]="user.creditCardNumber">
+        <span>Credit card number</span>
+        <i></i>
+      </div>
+
+      <div class="links">
+        <a href="#">Forgot Password</a>
+        <a href="#">Sign in</a>
+      </div>
+
+      <div>
+        <input type="submit" value="Register" (click)="userRegister()">
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+</html>
